@@ -23,16 +23,16 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" class="form-control">
+                    <input type="password" class="form-control" name="password1">
                 </div>
                 <div class="form-group">
                     <label for="confirm password">Confirm Password</label>
-                    <input type="password" name="" class="form-control">
+                    <input type="password" name="" class="form-control" name="password2">
                 </div>
                 <div class="checkbox">
                     <label><input type="checkbox"> Remember me</label>
                 </div>
-                <button type ="submit" class="btn btn-primary btn-block"><i class="fa fa-paper-plane"></i> Register</button>
+                <button type ="submit" class="btn btn-primary btn-block" name="reg_btn"><i class="fa fa-paper-plane"></i> Register</button>
             </form>
             <p>Already a member?<a href=""> Login</a></p>
         </div>
