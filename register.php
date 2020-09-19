@@ -1,3 +1,4 @@
+<?php  include("myfunctions.php")?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,23 +11,30 @@
 <body>
     <div class="container">
         <div class="form-holder">
-            <form role ="form" method="" action="">
+            <form role ="form" method="POST" action="register.php">
+
                 <div class="form-group">
-                    <label for="email">Email address:</label>
-                    <input type="email" class="form-control" id="email">
+                    <label for="uername">Username</label>
+                    <input type="text" name="username" class="form-control" value="<?php echo $username;?> ">
                 </div>
                 <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" value="<?php echo $email; ?>">
                 </div>
                 <div class="form-group">
-                    
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="confirm password">Confirm Password</label>
+                    <input type="password" name="" class="form-control">
                 </div>
                 <div class="checkbox">
                     <label><input type="checkbox"> Remember me</label>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type ="submit" class="btn btn-primary btn-block"><i class="fa fa-paper-plane"></i> Register</button>
             </form>
+            <p>Already a member?<a href=""> Login</a></p>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
