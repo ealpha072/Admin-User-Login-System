@@ -25,24 +25,56 @@
         $password_2 = e($_POST['password2']);
         //form validate:proper form filling
         if(empty($username)){
-            array_push($errors, "Please provide a username");
+            array_push($errors, "Please provide a username!!");
         }
         if(empty($mail)){
-            array_push($errors, "Please provide an email address");
+            array_push($errors, "Please provide an email address!!");
         }
         if(empty($password_1)){
-            array_push($errors, "Please provide a password");
+            array_push($errors, "Please provide a password!!");
         }
         if($password_1 != $password_2){
-            array_push($errors, "Password mismatch");
+            array_push($errors, "Password mismatch!!");
         }
 
         //register the user if all is okay
         if(count($errors)==0){
             //encrypt psswd first;
             $encrypt_password = md5($password_1);
+
+            if(isset($_POST['user_type'])){
+                $user_type = e($_POST['user_type']);
+                $myquery = "INSERT INTO users (username,email,user_type,password) VALUES("$username","$email","$user_type","$encrypt_password")";
+                mysqli_query($connection,$myquery);
+                $_SESSION['success'] = 'New user created successfully';
+                header('location: home.php');
+            }else{
+                $myquery = "INSERT INTO users(username,email,user_type,password) VALUES ("$username","$email","$user","$encrypt_password")";
+                mysqli_query($connection,$myquery);
+                ///add more here
+
+
+            }
         }
     }
+    //returns user array from id
+    function getUserId($id){
+        global $connection;
+        $query = "SELECT * FROM users WHERE id=" . $id
+        $results = mysqli_query($connection,$query);
 
+        $currentuser =mysqli_fetch_assoc($results);
+        return $currentuser;
+    }
+
+    ///escapping function;
+    function e($val){
+        global $connection;
+        return mysqli_real_escape_string($connection,trim($val))
+    }
+
+    function errorDisplay(){
+        
+    }
 
   ?>
