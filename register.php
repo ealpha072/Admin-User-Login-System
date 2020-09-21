@@ -11,11 +11,11 @@
 <body>
     <div class="container">
         <div class="form-holder">
-            <form role ="form" method="POST" action="register.php">
-
+            <form method="POST" action="register.php">
+                <?php echo errorDisplay(); ?>
                 <div class="form-group">
                     <label for="uername">Username</label>
-                    <input type="text" name="username" class="form-control" value="<?php echo $username;?> ">
+                    <input type="text" name="username" class="form-control" value="<?php echo $username; ?> ">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -23,11 +23,11 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" class="form-control" name="password1">
+                    <input type="password" class="form-control" name="password_1">
                 </div>
                 <div class="form-group">
-                    <label for="confirm password">Confirm Password</label>
-                    <input type="password" name="" class="form-control" name="password2">
+                    <label for="confirm">Confirm Password</label>
+                    <input type="password" class="form-control" name="password_2">
                 </div>
                 <div class="checkbox">
                     <label><input type="checkbox"> Remember me</label>
