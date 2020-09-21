@@ -24,7 +24,7 @@
         $username = mysqli_real_escape_string($conn,$_POST['username']);
         $email = mysqli_real_escape_string($conn,$_POST['email']);
         $password_1 = mysqli_real_escape_string($conn,$_POST['password_1']);
-        $password_2 = $_POST['password_2'];
+        $password_2 = mysqli_real_escape_string($conn,$_POST['password_2']);
 
         //form validate:proper form filling
         if(empty($username)){
@@ -43,7 +43,7 @@
         //register the user if all is okay
         if(count($errors)==0){
             //encrypt psswd first;
-            $encrypt_password = md5($password);
+            $encrypt_password = md5($password_1);
 
             if(isset($_POST['user_type'])){
                 $user_type = mysqli_real_escape_string($conn,$_POST['user_type']);
@@ -74,7 +74,6 @@
         return $currentuser;
     }
 
-    ///escapping function;
 
     function errorDisplay(){
         global $errors;
@@ -102,6 +101,7 @@
         header('location: login.php');
     }
 
+    
     if(isset($_POST['login_btn'])){
         login();
     }
@@ -109,6 +109,42 @@
     function login(){
         global $conn, $username, $errors;
 
-        $username = mysqli_real_escape_string($_POST)
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $password =mysqli_real_escape_string($conn, $_POST['password']);
+
+        //formvalidation
+        if(empty($username)){
+            array_push($errors, "Please provide your user name");
+        }
+        if(empty($password)){
+            array_push($errors, "Please provide your password");
+        }
+        //echo "i";
+        //else login
+        if(count($errors) == 0){
+            $password = md5($password);
+           //echo $password;
+
+            $login_querry= "SELECT * FROM users WHERE username = '$username' AND password ='$password'";
+            $login_result = mysqli_query($conn, $login_querry);
+            //echo $login_result;
+            if(mysqli_num_rows($login_result)==1){
+                //we have found the user, so we check if he is a user or admin;
+                $logged_in_user= mysqli_fetch_assoc($login_result);
+                echo $logged_in_user;
+                if($logged_in_user['user_type']=='admin'){
+                    $_SESSION['user'] = $logged_in_user;
+                    $_SESSION['success'] = 'You are now logged in';
+                    header('location: admin/home.php');
+                }else{
+                    $_SESSION['user'] = $logged_in_user;
+                    $_SESSION['success'] = 'You are now logged in';
+                    header('location: index.php');
+                }
+            }else{
+                array_push($errors, "Wrong username and/or password");
+            }
+        }
     }
+     
   ?>
