@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     //database connection;
     $conn = mysqli_connect('localhost','root','','multi-login');
 
@@ -14,6 +13,12 @@
         register();
     }
 
+    //LOGIN USER
+    if(isset($_POST['login_btn'])){
+        login();
+    }
+
+    //RREGISTER FCTN
     function register(){
         //use global key word to make these variables available in other functions as well;
         global $conn,$errors,$username,$email;
@@ -50,7 +55,7 @@
                 $myquery = "INSERT INTO users (username,email,user_type,password) VALUES('$username','$email','$user_type','$encrypt_password')";
                 mysqli_query($conn,$myquery);
                 $_SESSION['success'] = 'New user created successfully';
-                header('location: home.php');
+                header('location: admin/home.php');
             }else{
                 $myquery = "INSERT INTO users(username,email,user_type,password) VALUES ('$username','$email','user','$encrypt_password')";
                 mysqli_query($conn,$myquery);
@@ -64,7 +69,8 @@
             }
         }
     }
-    //returns user array from id
+    
+    //GET USER ARRAY FROM ARRAY
     function getUserId($id){
         global $conn;
         $query = "SELECT * FROM users WHERE id=" . $id;
@@ -74,27 +80,7 @@
         return $currentuser;
     }
 
-
-    function errorDisplay(){
-        global $errors;
-
-        if(count($errors)>0){
-            echo '<div class ="errordiv">';
-                foreach ($errors as $error) {
-                    echo $error .'<br>';
-                }
-            echo '</div>';
-        }
-    }
-
-    function isLoggedIn(){
-        if(isset($_SESSION['user'])){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
+    //LOGOUT USER
     if(isset($_GET['logout'])){
         session_destroy();
         unset($_SESSION['user']);
@@ -102,10 +88,7 @@
     }
 
     
-    if(isset($_POST['login_btn'])){
-        login();
-    }
-
+    
     function login(){
         global $conn, $username, $errors;
 
@@ -123,16 +106,17 @@
         //else login
         if(count($errors) == 0){
             $password = md5($password);
-           //echo $password;
+           echo $password;
 
-            $login_querry= "SELECT * FROM users WHERE username = '$username' AND password ='$password'";
+            $login_querry= "SELECT * FROM users WHERE username = '$username' AND password ='$password' LIMIT 1";
             $login_result = mysqli_query($conn, $login_querry);
             //echo $login_result;
             if(mysqli_num_rows($login_result)==1){
                 //we have found the user, so we check if he is a user or admin;
                 $logged_in_user= mysqli_fetch_assoc($login_result);
-                echo $logged_in_user;
+                //echo $logged_in_user;
                 if($logged_in_user['user_type']=='admin'){
+                    //echo "administrator";
                     $_SESSION['user'] = $logged_in_user;
                     $_SESSION['success'] = 'You are now logged in';
                     header('location: admin/home.php');
@@ -146,5 +130,35 @@
             }
         }
     }
-     
-  ?>
+
+    //LOGGED IN LOGIC
+    function isLoggedIn(){
+        if(isset($_SESSION['user'])){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //IS ADMIN LOGIC
+    function isAdmin(){
+        if(isset($_SESSION['user']) && $_SESSION['user']['user_type']=='admin'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //ERRORS DISPLAY
+    function errorDisplay(){
+        global $errors;
+
+        if(count($errors)>0){
+            echo '<div class ="errordiv">';
+                foreach ($errors as $error) {
+                    echo $error .'<br>';
+                }
+            echo '</div>';
+        }
+    }
+?> 
