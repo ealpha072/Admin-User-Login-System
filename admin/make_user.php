@@ -1,9 +1,9 @@
-<?php include("../myfunctions.php"); ?>
+<?php include('../myfunctions.php'); ?>
 <?php include("../header.php"); ?>
     <div class="heading">
         <h2 class="text-center">Admin - Create new user</h2>
     </div>
-    <form method="POST" action="register.php">
+    <form method="POST" action="make_user.php">
                 <?php echo errorDisplay(); ?>
                 <div class="form-group">
                     <label for="uername">Username</label>
@@ -30,5 +30,6 @@
                     <input type="password" class="form-control" name="password_2">
                 </div>
                 <button type ="submit" class="btn btn-primary btn-block" name="reg_btn"><i class="fa fa-paper-plane"></i> Add User</button>
-            </form>
+    </form>
+
 <?php include("../footer.php");  ?>
