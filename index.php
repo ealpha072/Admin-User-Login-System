@@ -1,17 +1,13 @@
-<?php include('myfunctions.php');  ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="">
-</head>
-<body>
-    <div class="container">
+<?php include('myfunctions.php'); 
+    if(!isLoggedIn()){
+        $_SESSION['msg'] = 'You must be logged in first';
+        header('location: register.php');
+    }
+?>
+<?php include("header.php"); ?>
+
         <div class="home-header">
-            <h3 class="text-centre">Home page</h3>
+            <h3 class="text-center">Home page</h3>
         </div>
         <div class="content">
             <!--notifiation message-->
@@ -25,12 +21,14 @@
                     </h3>
                 </div>
             <?php endif ?>
+            <div>
+                <?php if(isset($_SESSION['user'])):  ?>
+                    <?php echo $_SESSION['user']['username'];  ?>
+                    <small>
+                        <i>(<?php echo ($_SESSION['user']['user_type']);  ?>)<br>
+                        <a href="index.php?logout='1'">Logout</a>
+                    </small>
+                <?php endif ?>
+            </div>
         </div>
-    </div>
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>  
-</body>
-</html>
+<?php include("footer.php"); ?>
