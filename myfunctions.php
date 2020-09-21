@@ -87,4 +87,28 @@
             echo '</div>';
         }
     }
+
+    function isLoggedIn(){
+        if(isset($_SESSION['user'])){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    if(isset($_GET['logout'])){
+        session_destroy();
+        unset($_SESSION['user']);
+        header('location: login.php');
+    }
+
+    if(isset($_POST['login_btn'])){
+        login();
+    }
+
+    function login(){
+        global $conn, $username, $errors;
+
+        $username = mysqli_real_escape_string($_POST)
+    }
   ?>
