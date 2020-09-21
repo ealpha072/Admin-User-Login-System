@@ -55,7 +55,7 @@
                 $myquery = "INSERT INTO users (username,email,user_type,password) VALUES('$username','$email','$user_type','$encrypt_password')";
                 mysqli_query($conn,$myquery);
                 $_SESSION['success'] = 'New user created successfully';
-                header('location: admin/home.php');
+                header('location: home.php');
             }else{
                 $myquery = "INSERT INTO users(username,email,user_type,password) VALUES ('$username','$email','user','$encrypt_password')";
                 mysqli_query($conn,$myquery);
