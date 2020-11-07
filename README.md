@@ -4,8 +4,8 @@
  1. PHP - Backend logic
  2. mysqli -datbase querry
  
- Database name = multi-login 
- Table name= users;
+ * Database name = multi-login 
+ * Table name= users;
  
 ## To do:
   * Check if users already exist
