@@ -23,9 +23,7 @@
         //use global key word to make these variables available in other functions as well;
         global $conn,$errors,$username,$email;
 
-
         //recieve all values from form and escape them with e() function;
-        
         $username = mysqli_real_escape_string($conn,$_POST['username']);
         $email = mysqli_real_escape_string($conn,$_POST['email']);
         $password_1 = mysqli_real_escape_string($conn,$_POST['password_1']);
@@ -69,7 +67,7 @@
             }
         }
     }
-    
+
     //GET USER ARRAY FROM ARRAY
     function getUserId($id){
         global $conn;
@@ -87,8 +85,6 @@
         header('location: login.php');
     }
 
-    
-    
     function login(){
         global $conn, $username, $errors;
 
@@ -161,4 +157,4 @@
             echo '</div>';
         }
     }
-?> 
+?>
