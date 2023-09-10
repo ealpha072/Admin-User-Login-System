@@ -4,6 +4,7 @@
         header('location: register.php');
     }
 ?>
+
 <?php include("header.php"); ?>
 
         <div class="home-header">
