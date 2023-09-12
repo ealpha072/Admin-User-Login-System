@@ -1,10 +1,10 @@
 <?php include('myfunctions.php'); ?>
 <?php  include('header.php'); ?>
     <div class="mainHolder">
-        <div>
-            <h2 class="text-center">Login</h2>
-        </div>
         <div class="form-holder">
+            <div>
+                <h2 class="text-center">Login</h2>
+            </div>
             <form method="POST" action="register.php">
                 <?php echo errorDisplay(); ?>
                 <div class="form-group">

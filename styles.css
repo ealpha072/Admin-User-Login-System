@@ -1,7 +1,22 @@
+body{
+    background-color: #00DBDE;
+    background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+}
+
 .mainHolder{
     display: flex;
     flex-direction: column;
-    width: 60%;
-    justify-content: center;
-    align-items: center;
+    width: 30%;
+    margin: 20px auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.form-holder{
+    background-color: #ffff;
+    border-radius: 10px;
+}
+
+.form-holder div,
+.form-holder form{
+    margin: 20px 10px;
 }
