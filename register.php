@@ -1,7 +1,10 @@
 <?php  include("myfunctions.php"); ?>
 <?php  include("header.php"); ?>
-
+    <div class="mainHolder">
         <div class="form-holder">
+            <div>
+                <h2 class="text-center">Register</h2>
+            </div>
             <form method="POST" action="register.php">
                 <?php echo errorDisplay(); ?>
                 <div class="form-group">
@@ -24,7 +27,8 @@
                     <label><input type="checkbox"> Remember me</label>
                 </div>
                 <button type ="submit" class="btn btn-primary btn-block" name="reg_btn"><i class="fa fa-paper-plane"></i> Register</button>
+                <p>Already a member?<a href="login.php"> Login</a></p>
             </form>
-            <p>Already a member?<a href="login.php"> Login</a></p>
         </div>
+    </div>
 <?php include("footer.php"); ?>

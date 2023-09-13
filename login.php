@@ -12,7 +12,7 @@
                     <input type="text"name="username" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="password">Password:</label>
+                    <label for="password">Password</label>
                     <input type="password" class="form-control" name="password_1">
                 </div>
                 <div class="checkbox">
