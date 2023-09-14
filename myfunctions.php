@@ -33,12 +33,15 @@
         if(empty($username)){
             array_push($errors, "Please provide a username!!");
         }
+
         if(empty($email)){
             array_push($errors, "Please provide an email address!!");
         }
+
         if(empty($password_1)){
             array_push($errors, "Please provide a password!!");
         }
+        
         if($password_1 != $password_2){
             array_push($errors, "Password mismatch!!");
         }

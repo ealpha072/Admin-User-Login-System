@@ -16,7 +16,7 @@
                     <input type="email" class="form-control" name="email" value="<?php echo $email; ?>">
                 </div>
                 <div class="form-group">
-                    <label for="password">Password:</label>
+                    <label for="password">Password</label>
                     <input type="password" class="form-control" name="password_1">
                 </div>
                 <div class="form-group">
