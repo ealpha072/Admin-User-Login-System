@@ -45,3 +45,10 @@ form p{
 .form-holder form{
     margin: 20px 10px;
 }
+
+.userDetails{
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+	margin: 25px 0;
+	padding: 25px;
+	background-color: #fff;
+}

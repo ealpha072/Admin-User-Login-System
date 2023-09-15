@@ -41,7 +41,7 @@
         if(empty($password_1)){
             array_push($errors, "Please provide a password!!");
         }
-        
+
         if($password_1 != $password_2){
             array_push($errors, "Password mismatch!!");
         }
@@ -105,7 +105,7 @@
         //else login
         if(count($errors) == 0){
             $password = md5($password);
-           echo $password;
+            echo $password;
 
             $login_querry= "SELECT * FROM users WHERE username = '$username' AND password ='$password' LIMIT 1";
             $login_result = mysqli_query($conn, $login_querry);

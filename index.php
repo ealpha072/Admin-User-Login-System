@@ -6,10 +6,11 @@
 ?>
 
 <?php include("header.php"); ?>
-
+    <div class="homePage">
         <div class="home-header">
             <h3 class="text-center">Home page</h3>
         </div>
+
         <div class="content">
             <!--notifiation message-->
             <?php if (isset($_SESSION['success'])):  ?>
@@ -18,11 +19,11 @@
                         <?php
                             echo $_SESSION['success'];
                             unset($_SESSION['success']);
-                          ?>
+                            ?>
                     </h3>
                 </div>
             <?php endif ?>
-            <div>
+            <div class="userDetails>
                 <?php if(isset($_SESSION['user'])):  ?>
                     <?php echo $_SESSION['user']['username'];  ?>
                     <small>
@@ -32,4 +33,5 @@
                 <?php endif ?>
             </div>
         </div>
+    </div>
 <?php include("footer.php"); ?>
