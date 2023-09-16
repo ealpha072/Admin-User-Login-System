@@ -98,18 +98,19 @@
         if(empty($username)){
             array_push($errors, "Please provide your user name");
         }
+
         if(empty($password)){
             array_push($errors, "Please provide your password");
         }
-        //echo "i";
-        //else login
+
         if(count($errors) == 0){
             $password = md5($password);
             echo $password;
 
             $login_querry= "SELECT * FROM users WHERE username = '$username' AND password ='$password' LIMIT 1";
             $login_result = mysqli_query($conn, $login_querry);
-            //echo $login_result;
+            var_dump($login_result);
+
             if(mysqli_num_rows($login_result)==1){
                 //we have found the user, so we check if he is a user or admin;
                 $logged_in_user= mysqli_fetch_assoc($login_result);
