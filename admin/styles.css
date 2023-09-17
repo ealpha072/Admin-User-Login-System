@@ -1,0 +1,54 @@
+body{
+    background-color: #00DBDE;
+    background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+}
+
+.mainHolder{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 20px auto;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.form-holder h2{
+    font-size: 32px;
+    font-weight: 800;
+    color: #FC00FF;
+}
+
+form{
+    width: 90%;
+    margin: auto;
+}
+
+form label{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+form button{
+    width: 50%;
+    margin: auto;
+}
+
+form p{
+    margin-top: 20px;
+}
+
+.form-holder{
+    background-color: #ffff;
+    border-radius: 10px;
+}
+
+.form-holder div,
+.form-holder form{
+    margin: 20px 10px;
+}
+
+.userDetails{
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+	margin: 25px 0;
+	padding: 25px;
+	background-color: #fff;
+}
